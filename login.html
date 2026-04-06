@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GrandStay Pro</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* 🌌 BACKGROUND */
+body{
+    height:100vh;
+    overflow:hidden;
+    background:#020617;
+}
+
+/* IMAGE */
+.bg{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:url("https://images.unsplash.com/photo-1551882547-ff40c63fe5fa") no-repeat center/cover;
+    filter:brightness(0.45);
+    z-index:-2;
+}
+
+/* OVERLAY */
+.overlay{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:linear-gradient(135deg,rgba(2,6,23,0.9),rgba(15,23,42,0.7));
+    z-index:-1;
+}
+
+/* FLOATING LIGHT */
+.glow{
+    position:absolute;
+    width:350px;
+    height:350px;
+    background:radial-gradient(circle,#22c55e,transparent);
+    filter:blur(150px);
+    opacity:0.4;
+    animation:float 12s infinite alternate ease-in-out;
+}
+
+.glow:nth-child(1){top:5%; left:15%;}
+.glow:nth-child(2){bottom:5%; right:15%;}
+
+@keyframes float{
+    from{transform:translateY(0);}
+    to{transform:translateY(60px);}
+}
+
+/* LAYOUT */
+.container{
+    display:flex;
+    height:100vh;
+}
+
+/* LEFT CONTENT */
+.left{
+    flex:1;
+    padding:90px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    color:white;
+}
+
+.left h1{
+    font-size:50px;
+    font-weight:600;
+}
+
+.left span{
+    color:#4ade80;
+}
+
+.left p{
+    margin-top:18px;
+    color:#cbd5f5;
+}
+
+.features{
+    margin-top:35px;
+}
+
+.features div{
+    margin:14px 0;
+    color:#e2e8f0;
+}
+
+/* RIGHT LOGIN */
+.right{
+    width:520px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding-right:10%;
+}
+
+/* 🔥 NEW LOGIN BOX DESIGN */
+.login-box{
+    width:100%;
+    padding:50px 40px;
+
+    background:rgba(255,255,255,0.04);
+    backdrop-filter:blur(35px);
+
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,0.15);
+
+    box-shadow:0 30px 80px rgba(0,0,0,0.8);
+
+    animation: fadeSlide 1s ease, floatBox 4s infinite;
+    position:relative;
+}
+
+/* TOP LINE DESIGN */
+.login-box::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:3px;
+    background:linear-gradient(90deg,#22c55e,#4ade80);
+    border-radius:20px 20px 0 0;
+}
+
+/* TITLE */
+.login-box h2{
+    color:white;
+    margin-bottom:5px;
+}
+
+.login-box small{
+    color:#94a3b8;
+    display:block;
+    margin-bottom:25px;
+}
+
+/* INPUT GROUP */
+.input-group{
+    position:relative;
+    margin:18px 0;
+}
+
+/* ICON */
+.input-group span{
+    position:absolute;
+    left:12px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#4ade80;
+}
+
+/* INPUT */
+.input-group input{
+    width:100%;
+    padding:14px 14px 14px 40px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.1);
+
+    background:rgba(255,255,255,0.05);
+    color:white;
+
+    transition:0.3s;
+}
+
+.input-group input:focus{
+    outline:none;
+    border-color:#4ade80;
+    box-shadow:0 0 10px rgba(74,222,128,0.5);
+    transform:scale(1.03);
+}
+
+/* BUTTON */
+button{
+    width:100%;
+    padding:14px;
+    margin-top:15px;
+
+    background:linear-gradient(135deg,#22c55e,#16a34a);
+    border:none;
+    border-radius:12px;
+
+    font-weight:600;
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 30px rgba(34,197,94,0.6);
+}
+
+/* EXTRA */
+.extra{
+    margin-top:18px;
+    text-align:center;
+    font-size:13px;
+    color:#94a3b8;
+}
+
+.extra span{
+    color:#4ade80;
+    cursor:pointer;
+}
+
+/* ANIMATION */
+@keyframes fadeSlide{
+    from{opacity:0; transform:translateY(40px);}
+    to{opacity:1;}
+}
+@keyframes floatBox{
+    50%{transform:translateY(-10px);}
+}
+
+
+/* DASHBOARD PREMIUM 🔥 */
+.dashboard{
+    display:none;
+    height:100vh;
+}
+
+/* FLEX */
+.dashboard-layout{
+    display:flex;
+    height:100%;
+}
+
+/* SIDEBAR */
+.sidebar{
+    width:260px;
+    background:linear-gradient(180deg,#020617,#020617,#041c12);
+    padding:25px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    border-right:1px solid rgba(255,255,255,0.08);
+}
+
+/* LOGO */
+.logo{
+    font-size:22px;
+    font-weight:600;
+    color:#4ade80;
+    margin-bottom:30px;
+}
+
+/* MENU */
+.menu a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px;
+    margin:8px 0;
+    color:#cbd5f5;
+    text-decoration:none;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+.menu a:hover{
+    background:rgba(74,222,128,0.15);
+    color:#4ade80;
+    transform:translateX(5px);
+}
+
+/* ACTIVE */
+.menu a.active{
+    background:linear-gradient(90deg,#22c55e,#16a34a);
+    color:black;
+}
+
+/* LOGOUT */
+.logout{
+    margin-top:auto;
+}
+
+/* CONTENT AREA */
+.main{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+}
+
+/* TOP BAR */
+.topbar{
+    height:60px;
+    background:rgba(255,255,255,0.03);
+    backdrop-filter:blur(20px);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 20px;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.topbar h3{
+    color:#e2e8f0;
+}
+
+.user{
+    color:#4ade80;
+}
+
+/* CONTENT FRAME */
+.frame{
+    flex:1;
+    padding:10px;
+}
+
+.frame iframe{
+    width:100%;
+    height:100%;
+    border:none;
+    border-radius:12px;
+}
+
+/* ANIMATION */
+@keyframes fadeSlide{
+    from{opacity:0; transform:translateY(40px);}
+    to{opacity:1;}
+}
+@keyframes floatBox{
+    50%{transform:translateY(-10px);}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN PAGE -->
+<div id="loginPage">
+
+<div class="bg"></div>
+<div class="overlay"></div>
+<div class="glow"></div>
+<div class="glow"></div>
+
+<div class="container">
+
+<div class="left">
+    <h1>Smart Hotel <span>Analytics</span></h1>
+    <p>Unlock powerful insights into revenue and occupancy.</p>
+
+    <div class="features"> 
+        <div>✔ Real-time Revenue Monitoring</div> 
+        <div>✔ Occupancy & Demand Forecast</div> 
+        <div>✔ Guest Insights Dashboard</div> 
+        <div>✔ Smart Pricing Optimization</div> 
+    </div> 
+</div>
+
+<div class="right">
+    <div class="login-box">
+        <h2>Welcome Back</h2>
+        <small>Login to access dashboard</small>
+
+        <div class="input-group">
+            <span>👤</span>
+            <input id="user" placeholder="Username">
+        </div>
+
+        <div class="input-group">
+            <span>🔒</span>
+            <input id="pass" type="password" placeholder="Password">
+        </div>
+
+        <button onclick="login()">Login</button>
+
+        <div class="extra">
+            Forgot password? <span>Reset</span>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+
+<!-- 🔥 PREMIUM DASHBOARD -->
+<div class="dashboard" id="dashboardPage">
+
+<div class="dashboard-layout">
+
+    <div class="sidebar">
+        <div>
+            <div class="logo">GrandStay</div>
+
+            <div class="menu">
+                <a class="active">🏠 Dashboard</a>
+                <a>📊 Revenue</a>
+                <a>📈 Occupancy</a>
+                <a>⭐ Reviews</a>
+            </div>
+        </div>
+
+        <div class="logout">
+            <a onclick="logout()">🚪 Logout</a>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="topbar">
+            <h3>Hotel Analytics Dashboard</h3>
+            <div class="user">👤 Admin</div>
+        </div>
+
+        <div class="frame">
+            <iframe src="https://ap2.ca.analytics.ibm.com/bi/?perspective=dashboard&pathRef=.my_folders%2Fdashboardi&closeWindowOnLastView=true&ui_appbar=false&ui_navbar=false&shareMode=embedded&action=view&mode=dashboard&subView=model0000019d4d49dc38_00000000&nav_filter=true"></iframe>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+<script>
+function login(){
+    let u=document.getElementById("user").value;
+    let p=document.getElementById("pass").value;
+
+    if(u==="admin" && p==="1234"){
+        document.getElementById("loginPage").style.display="none";
+        document.getElementById("dashboardPage").style.display="block";
+    }else{
+        alert("Invalid Login ❌");
+    }
+}
+
+function logout(){
+    document.getElementById("dashboardPage").style.display="none";
+    document.getElementById("loginPage").style.display="block";
+}
+</script>
+</body>
+</html>
